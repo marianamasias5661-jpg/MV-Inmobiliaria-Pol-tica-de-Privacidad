@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Política de Privacidad de MV Inmobiliaria. Conoce cómo protegemos y utilizamos la información que compartes con nosotros." />
+  <meta name="robots" content="noindex, follow" />
+  <title>Política de Privacidad · MV Inmobiliaria</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── TOKENS (idénticos a la landing principal) ─────────────── */
+    :root {
+      --olive:       #4A5E2A;
+      --olive-light: #6B7F45;
+      --olive-soft:  #8FA05C;
+      --olive-pale:  #E8EDD9;
+      --beige:       #F5F0E8;
+      --beige-warm:  #EDE4D3;
+      --white:       #FAFAF8;
+      --charcoal:    #1C1C1A;
+      --mid:         #5A5A54;
+      --light:       #9A9A90;
+      --border:      #E2DDD4;
+
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'DM Sans', system-ui, sans-serif;
+
+      --r-sm: 8px;
+      --r-md: 16px;
+      --r-lg: 24px;
+      --shadow-sm: 0 2px 12px rgba(74,94,42,.08);
+      --shadow-md: 0 8px 32px rgba(74,94,42,.12);
+
+      --nav-h: 68px;
+    }
+
+    /* ─── RESET ──────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--sans);
+      background: var(--white);
+      color: var(--charcoal);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── UTILITIES ──────────────────────────────────────────────── */
+    .container {
+      width: 100%;
+      max-width: 780px; /* más estrecho para lectura cómoda */
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .container--wide { max-width: 1100px; }
+
+    /* ─── FADE-IN ────────────────────────────────────────────────── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .65s cubic-bezier(.4,0,.2,1), transform .65s cubic-bezier(.4,0,.2,1);
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in-delay-1 { transition-delay: .1s; }
+    .fade-in-delay-2 { transition-delay: .2s; }
+    .fade-in-delay-3 { transition-delay: .3s; }
+
+    /* ─── NAVBAR ─────────────────────────────────────────────────── */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--nav-h);
+      background: rgba(250,250,248,.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 100%;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      flex-shrink: 0;
+    }
+    .nav-logo-icon {
+      width: 34px; height: 34px;
+      background: var(--olive); border-radius: var(--r-sm);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .nav-logo-icon img {
+      width: 100%; height: 100%; object-fit: contain;
+      border-radius: var(--r-sm);
+    }
+    .nav-logo-icon svg { width: 18px; height: 18px; fill: none; stroke: #fff; stroke-width: 2; }
+    .nav-logo-text {
+      font-family: var(--serif); font-size: 1.1rem; font-weight: 600;
+      color: var(--charcoal);
+    }
+    .nav-logo-sub {
+      font-size: .62rem; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--olive);
+    }
+    .nav-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: .82rem; font-weight: 500; color: var(--mid);
+      padding: 8px 18px; border-radius: 100px;
+      border: 1.5px solid var(--border);
+      transition: color .2s, border-color .2s, background .2s;
+    }
+    .nav-back:hover { color: var(--olive); border-color: var(--olive); background: var(--olive-pale); }
+    .nav-back svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ─── HERO ───────────────────────────────────────────────────── */
+    #hero {
+      padding-top: calc(var(--nav-h) + 64px);
+      padding-bottom: 72px;
+      background: linear-gradient(160deg, var(--beige) 0%, var(--white) 60%, var(--olive-pale) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -30%; right: -10%;
+      width: 55%; padding-bottom: 55%;
+      background: radial-gradient(circle, rgba(143,160,92,.14) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; z-index: 1; }
+    .hero-breadcrumb {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: .7rem; font-weight: 500; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--olive);
+      margin-bottom: 24px;
+    }
+    .hero-breadcrumb a { color: var(--mid); transition: color .2s; }
+    .hero-breadcrumb a:hover { color: var(--olive); }
+    .hero-breadcrumb span { color: var(--light); }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: var(--sans); font-size: .68rem; font-weight: 500;
+      letter-spacing: .12em; text-transform: uppercase; color: var(--olive);
+      background: var(--olive-pale); border-radius: 100px;
+      padding: 4px 14px; margin-bottom: 20px;
+    }
+    .hero-tag::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--olive); flex-shrink: 0;
+    }
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
+      font-weight: 300; line-height: 1.08;
+      letter-spacing: -.02em; color: var(--charcoal);
+      margin-bottom: 20px;
+    }
+    .hero-title em { font-style: italic; color: var(--olive); }
+    .hero-subtitle {
+      font-size: clamp(.95rem, 2vw, 1.08rem);
+      color: var(--mid); line-height: 1.75;
+      max-width: 580px; font-weight: 300;
+    }
+    .hero-meta {
+      display: flex; align-items: center; gap: 16px;
+      margin-top: 32px; flex-wrap: wrap;
+    }
+    .hero-meta-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: .75rem; color: var(--light);
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 100px; padding: 5px 14px;
+    }
+    .hero-meta-chip svg { width: 12px; height: 12px; stroke: var(--light); fill: none; stroke-width: 1.8; }
+
+    /* ─── CONTENT AREA ───────────────────────────────────────────── */
+    .content-area {
+      padding: 72px 0 80px;
+    }
+    .content-area .container {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* ─── POLICY SECTION ─────────────────────────────────────────── */
+    .policy-section {
+      padding: 44px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .policy-section:last-child { border-bottom: none; }
+    .policy-number {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--olive-pale);
+      font-family: var(--serif); font-size: .88rem; font-style: italic;
+      color: var(--olive); font-weight: 400;
+      flex-shrink: 0; margin-bottom: 16px;
+    }
+    .policy-heading {
+      font-family: var(--serif);
+      font-size: clamp(1.35rem, 3vw, 1.7rem);
+      font-weight: 400; line-height: 1.2;
+      color: var(--charcoal); margin-bottom: 16px;
+    }
+    .policy-heading em { font-style: italic; color: var(--olive); }
+    .policy-body {
+      font-size: .97rem; line-height: 1.8;
+      color: var(--mid); max-width: 640px;
+    }
+    .policy-list {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 10px;
+      margin-top: 4px;
+    }
+    .policy-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: .97rem; line-height: 1.7; color: var(--mid);
+    }
+    .policy-list li::before {
+      content: '';
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--olive-soft);
+      flex-shrink: 0; margin-top: 8px;
+    }
+
+    /* ─── HIGHLIGHT BOX ──────────────────────────────────────────── */
+    .highlight-box {
+      background: var(--olive-pale);
+      border-left: 3px solid var(--olive);
+      border-radius: 0 var(--r-md) var(--r-md) 0;
+      padding: 20px 24px;
+      margin-top: 16px;
+      font-size: .9rem; color: var(--olive); line-height: 1.7;
+    }
+    .highlight-box strong { font-weight: 600; }
+
+    /* ─── CTA FINAL ──────────────────────────────────────────────── */
+    #cta-final {
+      background: var(--olive);
+      padding: 72px 0;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    #cta-final::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 60% 0%, rgba(255,255,255,.07) 0%, transparent 65%);
+    }
+    .cta-inner { position: relative; z-index: 1; }
+    .cta-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: .68rem; font-weight: 500; letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.7);
+      background: rgba(255,255,255,.12);
+      border-radius: 100px; padding: 4px 14px;
+      margin-bottom: 20px;
+    }
+    .cta-tag::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,.6); }
+    .cta-title {
+      font-family: var(--serif);
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      font-weight: 300; line-height: 1.15;
+      color: #fff; margin-bottom: 14px;
+    }
+    .cta-title em { font-style: italic; color: rgba(220,230,195,.85); }
+    .cta-sub {
+      font-size: .97rem; color: rgba(255,255,255,.72);
+      max-width: 420px; margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+    .btn-cta-white {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--sans); font-size: .9rem; font-weight: 500;
+      background: #fff; color: var(--olive);
+      border-radius: 100px; padding: 15px 32px;
+      box-shadow: 0 8px 28px rgba(0,0,0,.2);
+      transition: all .3s cubic-bezier(.4,0,.2,1);
+    }
+    .btn-cta-white:hover {
+      background: var(--olive-pale);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 36px rgba(0,0,0,.28);
+    }
+    .btn-cta-white svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
+
+    /* ─── FOOTER ─────────────────────────────────────────────────── */
+    footer {
+      background: var(--charcoal);
+      padding: 32px 0;
+    }
+    .footer-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-brand {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .footer-logo-icon {
+      width: 30px; height: 30px;
+      background: rgba(255,255,255,.1); border-radius: var(--r-sm);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .footer-logo-icon svg { width: 16px; height: 16px; fill: none; stroke: rgba(255,255,255,.8); stroke-width: 2; }
+    .footer-brand-name {
+      font-family: var(--serif); font-size: 1rem; font-weight: 600;
+      color: rgba(255,255,255,.85);
+    }
+    .footer-right {
+      font-size: .75rem; color: rgba(255,255,255,.35);
+      text-align: right; line-height: 1.6;
+    }
+    .footer-right a { color: rgba(255,255,255,.5); transition: color .2s; }
+    .footer-right a:hover { color: rgba(255,255,255,.8); }
+
+    /* ─── DIVIDER LINE ───────────────────────────────────────────── */
+    .divider {
+      width: 40px; height: 2px;
+      background: var(--olive-pale);
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .content-area { padding: 48px 0 60px; }
+      .policy-section { padding: 36px 0; }
+      #hero { padding-top: calc(var(--nav-h) + 48px); padding-bottom: 56px; }
+      #cta-final { padding: 56px 0; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .footer-right { text-align: left; }
+      .hero-meta { gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════ NAVBAR -->
+<nav id="navbar" role="navigation" aria-label="Navegación">
+  <div class="container container--wide">
+    <div class="nav-inner">
+
+      <a href="https://mv-inmobiliaria.vercel.app/" class="nav-logo" aria-label="MV Inmobiliaria – inicio">
+        <div class="nav-logo-icon">
+          <img src="IMG/logo.png" alt="Logo MV Inmobiliaria" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <svg viewBox="0 0 24 24" style="display:none;" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div>
+          <div class="nav-logo-text">MV Inmobiliaria</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════ HERO -->
+<section id="hero" aria-labelledby="hero-title">
+  <div class="container">
+    <div class="hero-inner">
+
+      <nav class="hero-breadcrumb fade-in" aria-label="Ruta de navegación">
+        <a href="https://mv-inmobiliaria.vercel.app/">MV Inmobiliaria</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">Política de Privacidad</span>
+      </nav>
+
+      <div class="hero-tag fade-in fade-in-delay-1" role="img" aria-label="Aviso legal">Aviso legal</div>
+
+      <h1 class="hero-title fade-in fade-in-delay-1" id="hero-title">
+        Política de<br><em>Privacidad.</em>
+      </h1>
+
+      <p class="hero-subtitle fade-in fade-in-delay-2">
+        Tu información es importante para nosotros. Conoce cómo protegemos y utilizamos los datos que compartes con MV Inmobiliaria.
+      </p>
+
+      <div class="hero-meta fade-in fade-in-delay-3">
+        <div class="hero-meta-chip">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Actualizado: Junio 2026
+        </div>
+        <div class="hero-meta-chip">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Datos protegidos
+        </div>
+        <div class="hero-meta-chip">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Lima, Perú
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ CONTENIDO -->
+<main id="main" class="content-area">
+  <div class="container">
+
+    <!-- Sección 1 -->
+    <article class="policy-section fade-in" aria-labelledby="sec1-title">
+      <div class="policy-number" aria-hidden="true">1</div>
+      <div class="divider"></div>
+      <h2 class="policy-heading" id="sec1-title">Información que <em>recopilamos</em></h2>
+      <p class="policy-body">
+        MV Inmobiliaria recopila únicamente la información que los usuarios proporcionan de forma voluntaria mediante formularios de contacto, incluyendo nombre, número de teléfono y datos relacionados con su consulta inmobiliaria.
+      </p>
+      <div class="highlight-box" role="note">
+        <strong>Solo lo necesario.</strong> No recopilamos información adicional sin tu conocimiento ni consentimiento.
+      </div>
+    </article>
+
+    <!-- Sección 2 -->
+    <article class="policy-section fade-in" aria-labelledby="sec2-title">
+      <div class="policy-number" aria-hidden="true">2</div>
+      <div class="divider"></div>
+      <h2 class="policy-heading" id="sec2-title">¿Para qué utilizamos <em>esta información?</em></h2>
+      <p class="policy-body" style="margin-bottom:20px;">
+        Los datos que compartes se utilizan exclusivamente para:
+      </p>
+      <ul class="policy-list" role="list">
+        <li>Contactar al usuario para atender su consulta.</li>
+        <li>Brindar información sobre nuestros servicios inmobiliarios.</li>
+        <li>Atender consultas relacionadas con la venta o alquiler de propiedades.</li>
+        <li>Realizar seguimiento a solicitudes de asesoría solicitadas.</li>
+      </ul>
+    </article>
+
+    <!-- Sección 3 -->
+    <article class="policy-section fade-in" aria-labelledby="sec3-title">
+      <div class="policy-number" aria-hidden="true">3</div>
+      <div class="divider"></div>
+      <h2 class="policy-heading" id="sec3-title">Protección <em>de datos</em></h2>
+      <p class="policy-body">
+        La información proporcionada será tratada de manera confidencial y utilizada exclusivamente para fines relacionados con los servicios de MV Inmobiliaria. Implementamos medidas de seguridad adecuadas para proteger los datos personales frente al acceso no autorizado, alteración o divulgación.
+      </p>
+    </article>
+
+    <!-- Sección 4 -->
+    <article class="policy-section fade-in" aria-labelledby="sec4-title">
+      <div class="policy-number" aria-hidden="true">4</div>
+      <div class="divider"></div>
+      <h2 class="policy-heading" id="sec4-title">Compartición <em>de información</em></h2>
+      <p class="policy-body">
+        MV Inmobiliaria no vende ni comparte información personal con terceros ajenos a la prestación de sus servicios. Tu información permanece dentro del equipo de trabajo de MV Inmobiliaria.
+      </p>
+    </article>
+
+    <!-- Sección 5 -->
+    <article class="policy-section fade-in" aria-labelledby="sec5-title">
+      <div class="policy-number" aria-hidden="true">5</div>
+      <div class="divider"></div>
+      <h2 class="policy-heading" id="sec5-title">Derechos <em>del usuario</em></h2>
+      <p class="policy-body">
+        El usuario puede solicitar en cualquier momento la actualización, corrección o eliminación de sus datos personales a través de los canales oficiales de contacto de MV Inmobiliaria.
+      </p>
+      <div class="highlight-box" role="note">
+        Para ejercer este derecho, escríbenos directamente por WhatsApp al
+        <strong><a href="https://wa.me/51940212339" target="_blank" rel="noopener" style="color:var(--olive);text-decoration:underline;text-underline-offset:3px;">+51 940 212 339</a></strong>.
+        Atenderemos tu solicitud a la brevedad.
+      </div>
+    </article>
+
+    <!-- Sección 6 -->
+    <article class="policy-section fade-in" aria-labelledby="sec6-title">
+      <div class="policy-number" aria-hidden="true">6</div>
+      <div class="divider"></div>
+      <h2 class="policy-heading" id="sec6-title">Aceptación <em>de la política</em></h2>
+      <p class="policy-body">
+        Al enviar un formulario o compartir información mediante este sitio web, el usuario acepta el tratamiento de sus datos conforme a esta Política de Privacidad. Si no estás de acuerdo con alguno de los términos aquí descritos, te recomendamos no enviar información personal a través de nuestros formularios.
+      </p>
+    </article>
+
+  </div>
+</main>
+
+<!-- ═══════════════════════════════════════════ FOOTER -->
+<footer role="contentinfo">
+  <div class="container container--wide">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <span class="footer-brand-name">MV Inmobiliaria</span>
+      </div>
+      <div class="footer-right">
+        © 2026 MV Inmobiliaria. Todos los derechos reservados.<br>
+        <a href="https://mv-inmobiliaria.vercel.app/">Volver a la página principal</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════ SCRIPTS -->
+<script>
+  // Scroll-triggered fade-in
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
+  fadeEls.forEach(el => observer.observe(el));
+
+  // Trigger hero elements immediately on load
+  window.addEventListener('load', () => {
+    document.querySelectorAll('#hero .fade-in').forEach((el, i) => {
+      setTimeout(() => el.classList.add('visible'), i * 80);
+    });
+  });
+
+  // Reducir movimiento para usuarios con preferencia de accesibilidad
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.fade-in').forEach(el => {
+      el.style.transition = 'none';
+      el.classList.add('visible');
+    });
+  }
+</script>
+</body>
+</html>
